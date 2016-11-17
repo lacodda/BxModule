@@ -8,6 +8,7 @@
     {
         public static function copy (Event $event)
         {
+            file_put_contents($_SERVER['DOCUMENT_ROOT'].'/debug.log', print_r(34234, true));
             // wet get ALL installed packages
             $packages = $event->getComposer()->getRepositoryManager()->getLocalRepository()->getPackages();
 
