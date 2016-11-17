@@ -24,10 +24,10 @@
         "php":">=5.4"
     },
     "scripts"    :{
-        "post-install-cmd":[
+        "post-package-install":[
             "Lacodda\\BxModule\\ScriptHandler::copy"
         ],
-        "post-update-cmd" :[
+        "post-package-update" :[
             "Lacodda\\BxModule\\ScriptHandler::copy"
         ]
     },
