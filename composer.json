@@ -1,0 +1,45 @@
+{
+    "name"       :"lacodda/bxmodule",
+    "description":"API for custom admin interface for CMS Bitrix",
+    "keywords"   :[
+        "bitrix",
+        "admin",
+        "module",
+        "api"
+    ],
+    "type"       :"library",
+    "license"    :"MIT",
+    "homepage"   :"https://github.com/Lacodda/bxmodule",
+    "support"    :{
+        "issues":"https://github.com/Lacodda/bxmodule/issues",
+        "source":"https://github.com/Lacodda/bxmodule/"
+    },
+    "authors"    :[
+        {
+            "name" :"Kirill Lahtachev",
+            "email":"lahtachev@gmail.com"
+        }
+    ],
+    "require"    :{
+        "php"                        :">=5.4",
+        "slowprog/composer-copy-file":"~0.1"
+    },
+    "scripts"    :{
+        "post-install-cmd":[
+            "SlowProg\\CopyFile\\ScriptHandler::copy"
+        ],
+        "post-update-cmd" :[
+            "SlowProg\\CopyFile\\ScriptHandler::copy"
+        ]
+    },
+    "extra"      :{
+        "copy-file":{
+            "local/vendor/lacodda/bxmodule/install/bxmodule_route.php":"bitrix/admin"
+        }
+    },
+    "autoload"   :{
+        "psr-4":{
+            "Lacodda\\BxModule\\":"src/"
+        }
+    }
+}
