@@ -21,8 +21,7 @@
         }
     ],
     "require"    :{
-        "php"                        :">=5.4",
-        "slowprog/composer-copy-file":"~0.1"
+        "php":">=5.4"
     },
     "scripts"    :{
         "post-install-cmd":[
@@ -31,11 +30,6 @@
         "post-update-cmd" :[
             "Lacodda\\BxModule\\ScriptHandler::copy"
         ]
-    },
-    "extra"      :{
-        "copy-file":{
-            "local/vendor/lacodda/bxmodule/install/bxmodule_route.php":"bitrix/admin"
-        }
     },
     "autoload"   :{
         "psr-4":{
