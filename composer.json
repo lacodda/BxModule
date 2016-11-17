@@ -26,10 +26,10 @@
     },
     "scripts"    :{
         "post-install-cmd":[
-            "SlowProg\\CopyFile\\ScriptHandler::copy"
+            "Lacodda\\BxModule\\ScriptHandler::copy"
         ],
         "post-update-cmd" :[
-            "SlowProg\\CopyFile\\ScriptHandler::copy"
+            "Lacodda\\BxModule\\ScriptHandler::copy"
         ]
     },
     "extra"      :{
