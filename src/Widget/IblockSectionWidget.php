@@ -80,43 +80,25 @@
                 $sectionId = '';
             }
 
-            return '<input name="' .
-            $this->getEditInputName () .
-            '"
-                     id="' .
-            $name .
-            '[' .
-            $key .
-            ']"
-                     value="' .
-            $sectionId .
-            '"
-                     size="' .
-            $inputSize .
-            '"
-                     type="text">' .
-            '<input type="button"
-                    value="..."
-                    onClick="jsUtils.OpenWindow(\'/bitrix/admin/iblock_section_search.php?lang=' .
-            LANGUAGE_ID .
-            '&amp;IBLOCK_ID=' .
-            $iblockId .
-            '&amp;n=' .
-            $name .
-            '&amp;k=' .
-            $key .
-            '\', ' .
-            $windowWidth .
-            ', ' .
-            $windowHeight .
-            ');">' .
-            '&nbsp;<span id="sp_' .
-            md5 ($name) .
-            '_' .
-            $key .
-            '" >' .
-            static::prepareToOutput ($section['NAME']) .
-            '</span>';
+            return sprintf (
+                '<input name="%s" id="%s[%s]" value="%s" size="%s" type="text"><input type="button" value="..." onClick="jsUtils.OpenWindow' .
+                '(\'/bitrix/admin/iblock_section_search.php?lang=%s&amp;IBLOCK_ID=%s&amp;n=%s&amp;k=%s\', %s, %s);">&nbsp;' .
+                '<span id="sp_%s_%s">%s</span>',
+                $this->getEditInputName (),
+                $name,
+                $key,
+                $sectionId,
+                $inputSize,
+                LANGUAGE_ID,
+                $iblockId,
+                $name,
+                $key,
+                $windowWidth,
+                $windowHeight,
+                md5 ($name),
+                $key,
+                static::prepareToOutput ($section['NAME'])
+            );
         }
 
         /**
@@ -144,17 +126,14 @@
 
                 $section = $rsSection->fetch ();
 
-                return '<a href="/bitrix/admin/iblock_section_edit.php?IBLOCK_ID=' .
-                $section['IBLOCK_ID'] .
-                '&type=' .
-                $section['IBLOCK_SECTION_IBLOCK_IBLOCK_TYPE_ID'] .
-                '&ID=' .
-                $sectionId .
-                '&lang=ru">[' .
-                $sectionId .
-                '] ' .
-                static::prepareToOutput ($section['NAME']) .
-                '</a>';
+                return sprintf (
+                    '<a href="/bitrix/admin/iblock_section_edit.php?IBLOCK_ID=%s&type=%s&ID=%s&lang=ru">[%s] %s</a>',
+                    $section['IBLOCK_ID'],
+                    $section['IBLOCK_SECTION_IBLOCK_IBLOCK_TYPE_ID'],
+                    $sectionId,
+                    $sectionId,
+                    static::prepareToOutput ($section['NAME'])
+                );
             }
         }
 
@@ -183,17 +162,14 @@
 
                 $section = $rsSection->fetch ();
 
-                $html = '<a href="/bitrix/admin/iblock_section_edit.php?IBLOCK_ID=' .
-                    $section['IBLOCK_ID'] .
-                    '&type=' .
-                    $section['IBLOCK_SECTION_IBLOCK_IBLOCK_TYPE_ID'] .
-                    '&ID=' .
-                    $sectionId .
-                    '&lang=ru">[' .
-                    $sectionId .
-                    '] ' .
-                    static::prepareToOutput ($section['NAME']) .
-                    '</a>';
+                $html = sprintf (
+                    '<a href="/bitrix/admin/iblock_section_edit.php?IBLOCK_ID=%s&type=%s&ID=%s&lang=ru">[%s] %s</a>',
+                    $section['IBLOCK_ID'],
+                    $section['IBLOCK_SECTION_IBLOCK_IBLOCK_TYPE_ID'],
+                    $sectionId,
+                    $sectionId,
+                    static::prepareToOutput ($section['NAME'])
+                );
             } else
             {
                 $html = '';

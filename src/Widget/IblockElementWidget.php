@@ -80,43 +80,25 @@
                 $elementId = '';
             }
 
-            return '<input name="' .
-            $this->getEditInputName () .
-            '"
-                     id="' .
-            $name .
-            '[' .
-            $key .
-            ']"
-                     value="' .
-            $elementId .
-            '"
-                     size="' .
-            $inputSize .
-            '"
-                     type="text">' .
-            '<input type="button"
-                    value="..."
-                    onClick="jsUtils.OpenWindow(\'/bitrix/admin/iblock_element_search.php?lang=' .
-            LANGUAGE_ID .
-            '&amp;IBLOCK_ID=' .
-            $iblockId .
-            '&amp;n=' .
-            $name .
-            '&amp;k=' .
-            $key .
-            '\', ' .
-            $windowWidth .
-            ', ' .
-            $windowHeight .
-            ');">' .
-            '&nbsp;<span id="sp_' .
-            md5 ($name) .
-            '_' .
-            $key .
-            '" >' .
-            static::prepareToOutput ($element['NAME']) .
-            '</span>';
+            return sprintf (
+                '<input name="%s" id="%s[%s]" value="%s" size="%s" type="text"><input type="button" value="..." onClick="jsUtils.OpenWindow' .
+                '(\'/bitrix/admin/iblock_element_search.php?lang=%s&amp;IBLOCK_ID=%s&amp;n=%s&amp;k=%s\', %s, %s);">&nbsp;' .
+                '<span id="sp_%s_%s" >%s</span>',
+                $this->getEditInputName (),
+                $name,
+                $key,
+                $elementId,
+                $inputSize,
+                LANGUAGE_ID,
+                $iblockId,
+                $name,
+                $key,
+                $windowWidth,
+                $windowHeight,
+                md5 ($name),
+                $key,
+                static::prepareToOutput ($element['NAME'])
+            );
         }
 
         /**
@@ -144,17 +126,14 @@
 
                 $element = $rsElement->fetch ();
 
-                return '<a href="/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=' .
-                $element['IBLOCK_ID'] .
-                '&type=' .
-                $element['IBLOCK_ELEMENT_IBLOCK_IBLOCK_TYPE_ID'] .
-                '&ID=' .
-                $elementId .
-                '&lang=ru">[' .
-                $elementId .
-                '] ' .
-                static::prepareToOutput ($element['NAME']) .
-                '</a>';
+                return sprintf (
+                    '<a href="/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=%s&type=%s&ID=%s&lang=ru">[%s] %s</a>',
+                    $element['IBLOCK_ID'],
+                    $element['IBLOCK_ELEMENT_IBLOCK_IBLOCK_TYPE_ID'],
+                    $elementId,
+                    $elementId,
+                    static::prepareToOutput ($element['NAME'])
+                );
             }
         }
 
@@ -183,17 +162,14 @@
 
                 $element = $rsElement->fetch ();
 
-                $html = '<a href="/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=' .
-                    $element['IBLOCK_ID'] .
-                    '&type=' .
-                    $element['IBLOCK_ELEMENT_IBLOCK_IBLOCK_TYPE_ID'] .
-                    '&ID=' .
-                    $elementId .
-                    '&lang=ru">[' .
-                    $elementId .
-                    '] ' .
-                    static::prepareToOutput ($element['NAME']) .
-                    '</a>';
+                $html = sprintf (
+                    '<a href="/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=%s&type=%s&ID=%s&lang=ru">[%s] %s</a>',
+                    $element['IBLOCK_ID'],
+                    $element['IBLOCK_ELEMENT_IBLOCK_IBLOCK_TYPE_ID'],
+                    $elementId,
+                    $elementId,
+                    static::prepareToOutput ($element['NAME'])
+                );
             } else
             {
                 $html = '';
