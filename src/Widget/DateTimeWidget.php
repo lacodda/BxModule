@@ -42,7 +42,14 @@
          */
         protected function getEditHtml ()
         {
-            return \CAdminCalendar::CalendarDate ($this->getEditInputName (), ConvertTimeStamp (strtotime ($this->getValue ()), "FULL"), 10, true);
+            $date = '0';
+
+            if ($this->getValue () && $this->getValue () != 0)
+            {
+                $date = ConvertTimeStamp (strtotime ($this->getValue ()), "FULL");
+            }
+
+            return \CAdminCalendar::CalendarDate ($this->getEditInputName (), $date, 10, true);
         }
 
         /**

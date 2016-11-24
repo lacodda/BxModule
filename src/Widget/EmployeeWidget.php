@@ -109,10 +109,8 @@
                                 if (old_value != value_%s) {
                                     DV_%s.innerHTML = \'<i>%s</i>\';
                                     if (value_%s != %s) {
-                                        console.log(1);
                                         document.getElementById("hiddenframe%s").src=\'/bitrix/admin/get_user.php?ID=\'+value_%s+\'&strName=%s&lang=%s\';
                                     } else {
-                                        console.log(2);
                                         DV_%s.innerHTML = \'[<a title="%s" class="tablebodylink" href="/bitrix/admin/user_edit.php?ID=%s&lang=%s">%s</a>] (%s) %s %s\';
                                     }
                                 }
